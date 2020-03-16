@@ -3,6 +3,7 @@
   "private": true,
   "description": "Data grid for React",
   "main": "src/index.js",
+  "version": "6.1.1",
   "scripts": {
     "docs": "gulp docs:create",
     "pretest": "npm run eslint",
