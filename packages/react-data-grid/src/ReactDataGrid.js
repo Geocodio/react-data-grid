@@ -259,9 +259,10 @@ class ReactDataGrid extends React.Component {
 
   componentDidMount() {
     this._mounted = true;
+    this.dataGridComponent = document.getElementsByClassName('react-grid-Container')[0]; //assumes only one react datagrid component exists
     window.addEventListener('resize', this.metricsUpdated);
     if (this.props.cellRangeSelection) {
-      window.addEventListener('mouseup', this.onWindowMouseUp);
+      this.dataGridComponent.addEventListener('mouseup', this.onWindowMouseUp);
     }
     this.metricsUpdated();
   }
@@ -269,7 +270,7 @@ class ReactDataGrid extends React.Component {
   componentWillUnmount() {
     this._mounted = false;
     window.removeEventListener('resize', this.metricsUpdated);
-    window.removeEventListener('mouseup', this.onWindowMouseUp);
+    this.dataGridComponent.removeEventListener('mouseup', this.onWindowMouseUp);
   }
 
   componentWillReceiveProps(nextProps) {
